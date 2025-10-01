@@ -1,0 +1,49 @@
+class VirpurInfoSystem:
+    """A basic information system for Virpur town."""
+    
+    def __init__(self):
+        self.town_facts = {
+            "Location": "Rajkot district, Gujarat, India",
+            "Population": "Approx. 18,000 (town area)",
+            "Known For": "Jalaram Bapa Temple (Virpur Jalaram Mandir) and the Sadavrat service"
+        }
+        self.points_of_interest = [
+            {"name": "Jalaram Bapa Temple", "type": "Religious Site", "description": "A revered temple dedicated to the saint Jalaram Bapa, famous for its 'Sadavrat' (free meal service)."},
+            {"name": "Jalaram Bapa Samadhi", "type": "Pilgrimage Site", "description": "The memorial site where the saint took Samadhi."},
+            {"name": "Virpur Railway Station", "type": "Landmark", "description": "The small local station, a key access point for pilgrims."}
+        ]
+
+    def get_town_fact(self, fact_name):
+        """Retrieves and prints a specific town fact."""
+        if fact_name in self.town_facts:
+            print(f"{fact_name}: {self.town_facts[fact_name]}")
+        else:
+            print(f"Fact not found: {fact_name}")
+
+    def search_points_of_interest(self, search_term):
+        """Searches for points of interest by name or type (case-insensitive)."""
+        print(f"\n--- Search Results for '{search_term}' ---")
+        lower_search_term = search_term.lower()
+        found = False
+        
+        for poi in self.points_of_interest:
+            if lower_search_term in poi["name"].lower() or lower_search_term in poi["type"].lower():
+                print(f"Name: {poi['name']}")
+                print(f"Type: {poi['type']}")
+                print(f"Description: {poi['description']}")
+                print("-" * 40)
+                found = True
+        
+        if not found:
+            print("No matching points of interest found.")
+
+# Main script logic
+info_system = VirpurInfoSystem()
+
+# Display general facts
+info_system.get_town_fact("Location")
+info_system.get_town_fact("Known For")
+
+# Search for landmarks
+info_system.search_points_of_interest("Bapa")
+info_system.search_points_of_interest("Site")
